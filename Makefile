@@ -190,7 +190,9 @@ define test.docker.do
 			NODE_VER=$(NODE_VER) \
 			BUILD_REV=$(BUILD_REV) ,)
 	IMAGE=instrumentisto/$(NAME):$(tag) PLATFORM=$(platform) \
-	node_modules/.bin/bats --pretty --timing tests/main.bats
+	node_modules/.bin/bats \
+		--timing $(if $(call eq,$(CI),),--pretty,--formatter tap) \
+		tests/main.bats
 endef
 
 
