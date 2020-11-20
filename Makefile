@@ -143,7 +143,7 @@ docker.image:
 docker.push:
 	$(foreach namespace,$(docker-namespaces),\
 		$(foreach tag,$(docker-tags),\
-			$(call docker.build,\
+			$(call docker.buildx,\
 				$(namespace),\
 				$(tag),\
 				$(shell echo "$(docker-platforms)" | tr -s '[:blank:]' ','),,\
