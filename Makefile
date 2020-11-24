@@ -51,6 +51,8 @@ image: docker.image
 
 push: docker.push
 
+release: git.release
+
 test: test.docker
 
 
@@ -220,11 +222,33 @@ endif
 
 
 
+################
+# Git commands #
+################
+
+# Release project version (apply version tag and push).
+#
+# Usage:
+#	make git.release [ver=($(VERSION)|<proj-ver>)]
+
+git-release-tag = v$(strip $(if $(call eq,$(ver),),$(VERSION),$(ver)))
+
+git.release:
+ifeq ($(shell git rev-parse $(git-release-tag) >/dev/null 2>&1 && echo "ok"),ok)
+	$(error "Git tag $(git-release-tag) already exists")
+endif
+	git tag $(git-release-tag) master
+	git push origin refs/tags/$(git-release-tag)
+
+
+
+
 ##################
 # .PHONY section #
 ##################
 
-.PHONY: image push test \
+.PHONY: image push release test \
         docker.build.cache docker.image docker.push \
+        git.release \
         npm.install \
         test.docker
