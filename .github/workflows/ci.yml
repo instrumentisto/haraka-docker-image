@@ -71,7 +71,7 @@ jobs:
       - name: Publish Docker images
         if: ${{ github.event_name == 'push'
                 && startsWith(github.ref, 'refs/tags/v') }}
-        run: make docker.push namespaces=ghcr.io/instrumentisto,instrumentisto
+        run: make docker.push
 
       - name: Update README on Quay.io
         if: ${{ github.event_name == 'push'
