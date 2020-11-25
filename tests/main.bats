@@ -17,3 +17,31 @@
     [ "$output" = "$(echo $PLATFORM | cut -d '/' -f2-)" ]
   fi
 }
+
+
+@test "Haraka is installed" {
+  run docker run --rm --platform $PLATFORM --entrypoint sh $IMAGE -c \
+    'which haraka'
+  [ "$status" -eq 0 ]
+}
+
+@test "Haraka runs ok" {
+  run docker run --rm --platform $PLATFORM --entrypoint sh $IMAGE -c \
+    'haraka -o -c /etc/haraka'
+  [ "$status" -eq 0 ]
+}
+
+@test "Haraka has correct version" {
+  run sh -c "cat Dockerfile | grep 'ARG haraka_ver=' | cut -d '=' -f2"
+  [ "$status" -eq 0 ]
+  [ ! "$output" = '' ]
+  expected="$output"
+
+  run docker run --rm --platform $PLATFORM --entrypoint sh $IMAGE -c \
+    "haraka --version | grep 'Version: ' | cut -d ':' -f2 | tr -d ' '"
+  [ "$status" -eq 0 ]
+  [ ! "$output" = '' ]
+  actual="$output"
+
+  [ "$actual" = "$expected" ]
+}
