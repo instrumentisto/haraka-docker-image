@@ -24,6 +24,6 @@ indent_size = 4
 indent_style = space
 indent_size = 2
 
-[*.bats]
+[*.{bats,sh}]
 indent_style = space
 indent_size = 2

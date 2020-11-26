@@ -8,6 +8,9 @@ ARG build_rev=0
 LABEL org.opencontainers.image.source="\
           https://github.com/instrumentisto/haraka-docker-image"
 
+
+COPY rootfs /
+
 RUN apk update \
  && apk upgrade \
  && apk add --no-cache \
@@ -25,15 +28,20 @@ RUN apk update \
  && sed -i -e 's,^max_unrecognized_commands,#max_unrecognized_commands,' \
         /etc/haraka/config/plugins \
     \
+ # Setup entrypoint
+ && chmod +x /usr/local/bin/docker-entrypoint.sh \
+    \
  # Cleanup caches and unnecessary stuff
  && apk del .build-deps \
  && rm -rf /var/cache/apk/* \
            /root/.npm/* \
            /tmp/*
 
+ENV HARAKA_HOME=/etc/haraka
+
 
 EXPOSE 25 587
 
-ENTRYPOINT ["/usr/local/bin/haraka"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
-CMD ["-c", "/etc/haraka/"]
+CMD ["-c", "/etc/haraka"]
