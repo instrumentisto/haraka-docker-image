@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [2.8.26-node15-r0] · 2020-12-16
+[2.8.26-node15-r0]: /../../tree/v2.8.26-node15-r0
+
+[Diff](/../../compare/v2.8.25-node15-r0...v2.8.26-node15-r0)
+
+### Upgraded
+
+- Haraka: <https://github.com/haraka/Haraka/releases/tag/2.8.26>
+
+
+
+
 ## [2.8.25-node15-r0] · 2020-12-16
 [2.8.25-node15-r0]: /../../tree/v2.8.25-node15-r0
 
