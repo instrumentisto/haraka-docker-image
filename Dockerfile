@@ -6,7 +6,7 @@ ARG haraka_ver=2.8.25
 ARG build_rev=0
 
 LABEL org.opencontainers.image.source="\
-          https://github.com/instrumentisto/haraka-docker-image"
+    https://github.com/instrumentisto/haraka-docker-image"
 
 
 COPY rootfs /

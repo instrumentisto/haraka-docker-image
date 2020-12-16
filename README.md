@@ -15,7 +15,7 @@ Haraka Docker image
 
 ## What is Haraka?
 
-[Haraka] is an open source SMTP server written in [Node.js] which provides extremely high performance coupled with a flexible plugin system allowing [Javascript] programmers full access to change the behaviour of the server.
+[Haraka] is an open source [SMTP] server written in [Node.js] which provides extremely high performance coupled with a flexible plugin system allowing [Javascript] programmers full access to change the behaviour of the server.
 
 > [haraka.github.io][Haraka]
 
@@ -128,6 +128,7 @@ If you have any problems with or questions about this image, please contact us t
 [Haraka]: https://haraka.github.io
 [Node.js]: https://nodejs.org
 [NPM]: https://www.npmjs.com
+[SMTP]: https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
 
 [1]: https://haraka.github.io/manual/Plugins.html
 [2]: https://haraka.github.io/Plugins.html#installing-npm-packaged-plugins
