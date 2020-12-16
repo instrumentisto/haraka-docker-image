@@ -13,6 +13,13 @@ Haraka Docker image
 
 
 
+## Supported tags and respective `Dockerfile` links
+
+- [`2.8.26-node15-r0`, `2.8.26`, `2.8`, `2`, `latest`][d1]
+
+
+
+
 ## What is Haraka?
 
 [Haraka] is an open source [SMTP] server written in [Node.js] which provides extremely high performance coupled with a flexible plugin system allowing [Javascript] programmers full access to change the behaviour of the server.
@@ -69,7 +76,7 @@ docker run -d -p 25:25 \
 
 
 
-## Image versions
+## Image tags
 
 This image is based on the popular [Alpine Linux project][11], available in [the alpine official image][12]. Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
@@ -78,22 +85,22 @@ This variant is highly recommended when final image size being as small as possi
 
 ### `X`
 
-Latest version of `X` [Haraka]'s major version.
+Latest tag of `X` [Haraka]'s major version.
 
 
 ### `X.Y`
 
-Latest version of `X.Y` [Haraka]'s minor version.
+Latest tag of `X.Y` [Haraka]'s minor version.
 
 
 ### `X.Y.Z`
 
-Latest image version of a concrete `X.Y.Z` version of [Haraka].
+Latest tag version of a concrete `X.Y.Z` version of [Haraka].
 
 
 ### `X.Y.Z-nodeA-rN`
 
-Concrete `N` image revision of a [Haraka]'s concrete `X.Y.Z` version installed with `A` major version of [Node.js].
+Concrete `N` image revision tag of a [Haraka]'s concrete `X.Y.Z` version installed with `A` major version of [Node.js].
 
 Once build, it's never updated.
 
@@ -141,3 +148,5 @@ If you have any problems with or questions about this image, please contact us t
 [92]: https://github.com/instrumentisto/haraka-docker-image
 [93]: https://github.com/instrumentisto/haraka-docker-image/blob/master/LICENSE.md
 [101]: https://github.com/instrumentisto/haraka-docker-image/issues
+
+[d1]: https://github.com/instrumentisto/haraka-docker-image/blob/master/Dockerfile
