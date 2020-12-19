@@ -114,7 +114,7 @@ docker.build.cache:
 #
 # Usage:
 #	make docker.image
-#		[tag=($(VERSIOM)|<tag>)]
+#		[tag=($(VERSION)|<tag>)]
 #		[platform=($(MAIN_PLATFORM)|<platform>)]
 #		[no-cache=(no|yes)]
 #		[HARAKA_VER=<haraka-version>]
@@ -165,7 +165,7 @@ docker.push:
 #
 # Usage:
 #	make test.docker
-#		[tag=($(VERSIOM)|<tag>)]
+#		[tag=($(VERSION)|<tag>)]
 #		[platforms=($(MAIN_PLATFORM)|@all|<platform-1>[,<platform-2>...])]
 #		[( [build=no]
 #		 | build=yes [HARAKA_VER=<haraka-version>]

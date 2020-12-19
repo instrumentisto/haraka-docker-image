@@ -26,6 +26,7 @@ jobs:
           | sudo tee /etc/docker/daemon.json
           sudo systemctl restart docker
 
+          make npm.install
           make test.docker platforms=@all build=yes
 
       - name: Login to GitHub Container Registry
