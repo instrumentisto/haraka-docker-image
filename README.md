@@ -29,6 +29,8 @@ Haraka Docker image
 
 > [github.com/haraka/Haraka](https://github.com/haraka/Haraka)
 
+![Haraka Logo](https://haraka.github.io/logo-dark.svg "Haraka Logo") 
+
 
 
 
