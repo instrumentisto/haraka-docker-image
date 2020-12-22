@@ -58,7 +58,7 @@ __Note!__ Once you've installed [Haraka plugins][1], do not forget to enable the
 
 #### NPM packaged
 
-[NPM packaged plugins][2] can be easily installed via `HARAKA_INSTALL_PLUGINS` environment variable. Specify it as comma-separated [NPM packages], and the container will run `npm install` on its startup:
+[NPM packaged plugins][2] can be easily installed via `HARAKA_INSTALL_PLUGINS` environment variable. Specify it as comma-separated [NPM] packages, and the container will run `npm install` on its startup:
 ```bash
 docker run -d -p 25:25 \
            -v /path/to/my/plugins:/etc/haraka/config/plugins:ro \
