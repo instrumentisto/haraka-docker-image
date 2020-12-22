@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [2.8.26-node15-r1] · 2020-12-22
+[2.8.26-node15-r1]: /../../tree/v2.8.26-node15-r1
+
+[Diff](/../../compare/v2.8.26-node15-r0...v2.8.26-node15-r1)
+
+### Fixed
+
+- Crashes on DNS resolution: <https://github.com/haraka/Haraka/issues/2883>
+
+
+
+
 ## [2.8.26-node15-r0] · 2020-12-16
 [2.8.26-node15-r0]: /../../tree/v2.8.26-node15-r0
 
