@@ -16,7 +16,7 @@ Haraka Docker image
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`2.8.26-node15-r1`, `2.8.26`, `2.8`, `2`, `latest`][d1]
+- [`2.8.27-node15-r0`, `2.8.27`, `2.8`, `2`, `latest`][d1]
 
 
 
