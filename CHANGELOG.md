@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [2.8.27-node15-r1] · 2021-02-18
+[2.8.27-node15-r1]: /../../tree/v2.8.27-node15-r1
+
+[Diff](/../../compare/v2.8.27-node15-r0...v2.8.27-node15-r1)
+
+### Upgraded
+
+- [Alpine Linux] 3.13.2: <https://github.com/docker-library/official-images/commit/629ce2163a502c16b78064eb3ea3c74b095b6745>
+
+
+
+
 ## [2.8.27-node15-r0] · 2021-01-06
 [2.8.27-node15-r0]: /../../tree/v2.8.27-node15-r0
 
@@ -13,7 +25,7 @@ All user visible changes to this project will be documented in this file. This p
 
 ### Upgraded
 
-- Haraka: <https://github.com/haraka/Haraka/releases/tag/2.8.27>
+- [Haraka] 2.8.27: <https://github.com/haraka/Haraka/releases/tag/2.8.27>
 
 
 
@@ -37,7 +49,7 @@ All user visible changes to this project will be documented in this file. This p
 
 ### Upgraded
 
-- Haraka: <https://github.com/haraka/Haraka/releases/tag/2.8.26>
+- [Haraka] 2.8.26: <https://github.com/haraka/Haraka/releases/tag/2.8.26>
 
 
 
@@ -49,10 +61,12 @@ All user visible changes to this project will be documented in this file. This p
 
 ### Upgraded
 
-- Haraka: <https://github.com/haraka/Haraka/releases/tag/2.8.25>
+- [Haraka] 2.8.25: <https://github.com/haraka/Haraka/releases/tag/2.8.25>
 
 
 
 
 
+[Alpine Linux]: https://www.alpinelinux.org
+[Haraka]: https://haraka.github.io 
 [Semantic Versioning 2.0.0]: https://semver.org
