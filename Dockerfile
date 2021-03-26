@@ -1,9 +1,9 @@
 # https://hub.docker.com/_/node
 ARG node_ver=15
-FROM node:${node_ver}-alpine
+FROM node:${node_ver}-alpine3.13
 
 ARG haraka_ver=2.8.27
-ARG build_rev=1
+ARG build_rev=2
 
 LABEL org.opencontainers.image.source="\
     https://github.com/instrumentisto/haraka-docker-image"
