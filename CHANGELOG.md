@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [2.8.27-node15-r4] · 2021-04-15
+[2.8.27-node15-r4]: /../../tree/v2.8.27-node15-r4
+
+[Diff](/../../compare/v2.8.27-node15-r3...v2.8.27-node15-r4)
+
+### Security updated
+
+- [Alpine Linux] 3.13.5: <https://github.com/docker-library/official-images/commit/0dc713b9d32fcaebaf9caa65ec34dfe122b0e120>
+
+
+
+
 ## [2.8.27-node15-r3] · 2021-04-01
 [2.8.27-node15-r3]: /../../tree/v2.8.27-node15-r3
 
