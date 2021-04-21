@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [2.8.27-node16-r5] · 2021-04-21
+[2.8.27-node16-r5]: /../../tree/v2.8.27-node16-r5
+
+[Diff](/../../compare/v2.8.27-node15-r4...v2.8.27-node16-r5)
+
+### Upgraded
+
+- [Node.js] 16: <https://github.com/nodejs/node/blob/v16.0.0/doc/changelogs/CHANGELOG_V16.md#2021-04-20-version-1600-current-bethgriggs>
+
+
+
+
 ## [2.8.27-node15-r4] · 2021-04-15
 [2.8.27-node15-r4]: /../../tree/v2.8.27-node15-r4
 
@@ -105,4 +117,5 @@ All user visible changes to this project will be documented in this file. This p
 
 [Alpine Linux]: https://www.alpinelinux.org
 [Haraka]: https://haraka.github.io 
+[Node.js]: https://nodejs.org
 [Semantic Versioning 2.0.0]: https://semver.org
