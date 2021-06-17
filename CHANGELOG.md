@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [2.8.27-node16-r6] · 2021-08-23
+[2.8.27-node16-r6]: /../../tree/v2.8.27-node16-r6
+
+[Diff](/../../compare/v2.8.27-node16-r5...v2.8.27-node16-r6)
+
+### Upgraded
+
+- [Alpine Linux] 3.14: <https://www.alpinelinux.org/posts/Alpine-3.14.0-released.html>
+
+
+
+
 ## [2.8.27-node16-r5] · 2021-04-21
 [2.8.27-node16-r5]: /../../tree/v2.8.27-node16-r5
 
