@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [2.8.28-node16-r0] · 2021-10-18
+[2.8.28-node16-r0]: /../../tree/v2.8.28-node16-r0
+
+[Diff](/../../compare/v2.8.27-node16-r7...v2.8.28-node16-r0)
+
+### Upgraded
+
+- [Haraka] 2.8.28: <https://github.com/haraka/Haraka/releases/tag/2.8.28>
+
+
+
+
 ## [2.8.27-node16-r7] · 2021-08-30
 [2.8.27-node16-r7]: /../../tree/v2.8.27-node16-r7
 
