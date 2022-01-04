@@ -6,13 +6,14 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## [2.8.28-node16-r2] · 2022-01-04
-[2.8.28-node16-r2]: /../../tree/v2.8.28-node16-r2
+## [2.8.28-node17-r0] · 2022-01-04
+[2.8.28-node17-r0]: /../../tree/v2.8.28-node17-r0
 
-[Diff](/../../compare/v2.8.28-node16-r1...2.8.28-node16-r2)
+[Diff](/../../compare/v2.8.28-node16-r1...2.8.28-node17-r0)
 
 ### Upgraded
 
+- [Node.js] 17: <https://github.com/nodejs/node/blob/v17.0.0/doc/changelogs/CHANGELOG_V17.md#2021-10-19-version-1700-current-bethgriggs>
 - [Alpine Linux] 3.15: <https://www.alpinelinux.org/posts/Alpine-3.15.0-released.html>
 
 
