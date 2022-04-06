@@ -3,7 +3,7 @@ ARG node_ver=17
 FROM node:${node_ver}-alpine3.15
 
 ARG haraka_ver=2.8.28
-ARG build_rev=3
+ARG build_rev=4
 
 LABEL org.opencontainers.image.source="\
     https://github.com/instrumentisto/haraka-docker-image"
