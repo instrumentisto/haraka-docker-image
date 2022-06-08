@@ -14,6 +14,7 @@ All user visible changes to this project will be documented in this file. This p
 ### Upgraded
 
 - [Node.js] 18: <https://github.com/nodejs/node/blob/v18.0.0/doc/changelogs/CHANGELOG_V18.md#2022-04-19-version-1800-current-bethgriggs>
+- [Alpine Linux] 3.16: <https://www.alpinelinux.org/posts/Alpine-3.16.0-released.html>
 
 
 
