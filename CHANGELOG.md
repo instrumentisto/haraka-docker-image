@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [2.8.28-node18-r0] · 2022-06-08
+[2.8.28-node18-r0]: /../../tree/v2.8.28-node18-r0
+
+[Diff](/../../compare/v2.8.28-node17-r4...v2.8.28-node18-r0)
+
+### Upgraded
+
+- [Node.js] 18: <https://github.com/nodejs/node/blob/v18.0.0/doc/changelogs/CHANGELOG_V18.md#2022-04-19-version-1800-current-bethgriggs>
+
+
+
+
 ## [2.8.28-node17-r4] · 2022-04-06
 [2.8.28-node17-r4]: /../../tree/v2.8.28-node17-r4
 
