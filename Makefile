@@ -77,12 +77,20 @@ define docker.buildx
 	$(eval platform := $(strip $(3)))
 	$(eval no-cache := $(strip $(4)))
 	$(eval args := $(strip $(5)))
+	$(eval github_url := $(strip $(or $(GITHUB_SERVER_URL),https://github.com)))
+	$(eval github_repo := $(strip $(or $(GITHUB_REPOSITORY),\
+	                                   instrumentisto/haraka-docker-image)))
 	docker buildx build --force-rm $(args) \
 		--platform $(platform) \
 		$(if $(call eq,$(no-cache),yes),--no-cache --pull,) \
 		--build-arg haraka_ver=$(HARAKA_VER) \
 		--build-arg node_ver=$(NODE_VER) \
 		--build-arg build_rev=$(BUILD_REV) \
+		--label org.opencontainers.image.source=$(github_url)/$(github_repo) \
+		--label org.opencontainers.image.revision=$(strip \
+			$(shell git show --pretty=format:%H --no-patch)) \
+		--label org.opencontainers.image.version=$(subst v,,$(strip \
+			$(shell git describe --tags --dirty --match='v*'))) \
 		-t $(namespace)/$(NAME):$(tag) .
 endef
 
