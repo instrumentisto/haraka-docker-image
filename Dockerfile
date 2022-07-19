@@ -3,7 +3,7 @@ ARG node_ver=18
 FROM node:${node_ver}-alpine3.16
 
 ARG haraka_ver=2.8.28
-ARG build_rev=0
+ARG build_rev=1
 
 
 COPY rootfs /
