@@ -11,6 +11,14 @@ runCmd() {
 
 set -e
 
+# Install APK (Alpine Package Keeper) packages if required.
+if [ ! -z "$APK_INSTALL_PACKAGES" ]; then
+  packages="$(echo $APK_INSTALL_PACKAGES | sed 's/,/ /g')"
+  runCmd apk add --update $packages
+
+  rm -rf /var/cache/apk/*
+fi
+
 # Specify actual hostname.
 echo "$HOSTNAME" > /etc/haraka/config/me
 

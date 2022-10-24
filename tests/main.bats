@@ -45,3 +45,21 @@
 
   [ "$actual" = "$expected" ]
 }
+
+
+@test "APK_INSTALL_PACKAGES installs packages" {
+  run docker run --rm --platform $PLATFORM \
+                 -e APK_INSTALL_PACKAGES=openssl,rclone \
+             $IMAGE apk list
+  [ "$status" -eq 0 ]
+  [ ! "$output" = '' ]
+  actual="$output"
+
+  run sh -c "printf \"$actual\" | grep -E '^openssl-.*\[installed\]$'"
+  [ "$status" -eq 0 ]
+  [ ! "$output" = '' ]
+
+  run sh -c "printf \"$actual\" | grep -E '^rclone-.*\[installed\]$'"
+  [ "$status" -eq 0 ]
+  [ ! "$output" = '' ]
+}

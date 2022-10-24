@@ -6,14 +6,20 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## [2.8.28-node19-r0] · 2022-10-19
+## [2.8.28-node19-r0] · 2022-10-24
 [2.8.28-node19-r0]: /../../tree/v2.8.28-node19-r0
 
 [Diff](/../../compare/v2.8.28-node18-r2...v2.8.28-node19-r0)
 
+### Added
+
+- Ability to pre-install [Alpine Linux] packages via `APK_INSTALL_PACKAGES` environment variable. ([#2])
+
 ### Upgraded
 
 - [Node.js] 19: <https://github.com/nodejs/node/blob/v19.0.0/doc/changelogs/CHANGELOG_V19.md#2022-10-18-version-1900-current-rafaelgss-and-ruyadorno>
+
+[#2]: /../../issues/2
 
 
 

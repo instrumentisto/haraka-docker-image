@@ -76,6 +76,16 @@ docker run -d -p 25:25 \
        instrumentisto/haraka
 ```
 
+#### [Alpine][11] packages
+
+Some plugins (like [`tls`][3]) may require additional system libraries being installed. Use `APK_INSTALL_PACKAGES` environment variable to pre-install them on container startup:
+```bash
+docker run -d -p 25:25 \
+           -v /path/to/my/plugins:/etc/haraka/config/plugins:ro \
+           -e APK_INSTALL_PACKAGES=openssl \
+       instrumentisto/haraka
+```
+
 
 
 
@@ -140,8 +150,9 @@ If you have any problems with or questions about this image, please contact us t
 [NPM]: https://www.npmjs.com
 [SMTP]: https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
 
-[1]: https://haraka.github.io/manual/Plugins.html
-[2]: https://haraka.github.io/Plugins.html#installing-npm-packaged-plugins
+[1]: https://haraka.github.io/core/Plugins
+[2]: https://haraka.github.io/core/Plugins#plugins-as-modules
+[3]: https://haraka.github.io/plugins/tls
 [11]: http://alpinelinux.org
 [12]: https://hub.docker.com/_/alpine
 [13]: http://www.musl-libc.org
