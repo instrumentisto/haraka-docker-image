@@ -176,7 +176,7 @@ docker.tar:
 	@mkdir -p $(dir $(docker-tar-file))
 	docker save -o $(docker-tar-file) \
 		$(foreach tag,$(subst $(comma), ,$(or $(tags),$(VERSION))),\
-			$(OWNER)/$(NAME):$(tag))
+			instrumentisto/$(NAME):$(tag))
 
 
 docker.test: test.docker
