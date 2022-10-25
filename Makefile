@@ -164,6 +164,33 @@ docker.push:
 				--push)))
 
 
+# Save Docker images to a tarball file.
+#
+# Usage:
+#	make docker.tar [to-file=(.cache/image.tar|<file-path>)]
+#	                [tags=($(VERSION)|<docker-tag-1>[,<docker-tag-2>...])]
+
+docker-tar-file = $(or $(to-file),.cache/image.tar)
+
+docker.tar:
+	@mkdir -p $(dir $(docker-tar-file))
+	docker save -o $(docker-tar-file) \
+		$(foreach tag,$(subst $(comma), ,$(or $(tags),$(VERSION))),\
+			$(OWNER)/$(NAME):$(tag))
+
+
+docker.test: test.docker
+
+
+# Load Docker images from a tarball file.
+#
+# Usage:
+#	make docker.untar [from-file=(.cache/image.tar|<file-path>)]
+
+docker.untar:
+	docker load -i $(or $(from-file),.cache/image.tar)
+
+
 
 
 ####################
@@ -260,7 +287,8 @@ endif
 ##################
 
 .PHONY: image push release test \
-        docker.build.cache docker.image docker.push \
+        docker.build.cache docker.image docker.push docker.tar docker.test \
+        docker.untar\
         git.release \
         npm.install \
         test.docker
