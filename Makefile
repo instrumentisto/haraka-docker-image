@@ -81,7 +81,11 @@ define docker.buildx
 	$(eval github_repo := $(strip $(or $(GITHUB_REPOSITORY),\
 	                                   instrumentisto/haraka-docker-image)))
 	docker buildx build --force-rm $(args) \
-		--platform $(platform) \
+		--platform $(strip \
+			$(if $(call eq,$(platform),linux/arm32v6),linux/arm/v6,\
+			$(if $(call eq,$(platform),linux/arm32v7),linux/arm/v7,\
+			$(if $(call eq,$(platform),linux/arm64v8),linux/arm64,\
+			                                          $(platform))))) \
 		$(if $(call eq,$(no-cache),yes),--no-cache --pull,) \
 		--build-arg haraka_ver=$(HARAKA_VER) \
 		--build-arg node_ver=$(NODE_VER) \
