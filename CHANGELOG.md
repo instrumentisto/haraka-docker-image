@@ -15,6 +15,10 @@ All user visible changes to this project will be documented in this file. This p
 
 - Ability to pre-install [Alpine Linux] packages via `APK_INSTALL_PACKAGES` environment variable. ([#2])
 
+### Upgraded
+
+- [Alpine Linux] 3.17: <https://www.alpinelinux.org/posts/Alpine-3.17.0-released.html>
+
 [#2]: /../../issues/2
 
 
