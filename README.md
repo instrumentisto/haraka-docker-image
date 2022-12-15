@@ -21,6 +21,13 @@ Haraka Docker image
 
 
 
+## Supported platforms
+
+- `linux`: `amd64`, `arm32v6`, `arm32v7`, `arm64v8`, `i386`, `ppc64le`, `s390x`
+
+
+
+
 ## What is Haraka?
 
 [Haraka] is an open source [SMTP] server written in [Node.js] which provides extremely high performance coupled with a flexible plugin system allowing [Javascript] programmers full access to change the behaviour of the server.
@@ -91,31 +98,48 @@ docker run -d -p 25:25 \
 
 ## Image tags
 
-This image is based on the popular [Alpine Linux project][11], available in [the alpine official image][12]. Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
+This image is based on the popular [Alpine Linux project][11], available in [the alpine official image][12]. [Alpine Linux][11] is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc][13] instead of [glibc and friends][14], so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread][15] for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-
-### `X`
-
-Latest tag of `X` [Haraka]'s major version.
+This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc][13] instead of [glibc and friends][14], so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread][15] for more discussion of the issues that might arise and some pro/con comparisons of using [Alpine][11]-based images.
 
 
-### `X.Y`
+### `<X>`
 
-Latest tag of `X.Y` [Haraka]'s minor version.
+Latest tag of the latest major `X` [Haraka] version.
 
-
-### `X.Y.Z`
-
-Latest tag version of a concrete `X.Y.Z` version of [Haraka].
+This is a multi-platform image.
 
 
-### `X.Y.Z-nodeA-rN`
+### `<X.Y>`
 
-Concrete `N` image revision tag of a [Haraka]'s concrete `X.Y.Z` version installed with `A` major version of [Node.js].
+Latest tag of the latest minor `X.Y` [Haraka] version.
 
-Once build, it's never updated.
+This is a multi-platform image.
+
+
+### `<X.Y.Z>`
+
+Latest tag of the concrete `X.Y.Z` [Haraka] version.
+
+This is a multi-platform image.
+
+
+### `<X.Y.Z>-node<A>-r<N>`
+
+Concrete `N` image revision tag of the concrete `X.Y.Z` [Haraka] version installed with `A` major version of [Node.js].
+
+Once built, it's never updated.
+
+This is a multi-platform image.
+
+
+### `<X.Y.Z>-node<A>-r<N>-<os>-<arch>`
+
+Concrete `N` image revision tag of the concrete `X.Y.Z` [Haraka] version installed with `A` major version of [Node.js] on the concrete `os` and `arch`.
+
+Once built, it's never updated.
+
+This is a single-platform image.
 
 
 
@@ -138,7 +162,6 @@ The [sources][92] for producing `instrumentisto/haraka` Docker images are licens
 We can't notice comments in the [DockerHub] (or other container registries) so don't use them for reporting issue or asking question.
 
 If you have any problems with or questions about this image, please contact us through a [GitHub issue][101].
-
 
 
 
