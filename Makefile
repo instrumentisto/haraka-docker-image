@@ -8,6 +8,13 @@ comma := ,
 eq = $(if $(or $(1),$(2)),$(and $(findstring $(1),$(2)),\
                                 $(findstring $(2),$(1))),1)
 
+# Maps platform identifier to the one accepted by Docker CLI.
+dockerify = $(strip $(if $(call eq,$(1),linux/arm32v6),linux/arm/v6,\
+                    $(if $(call eq,$(1),linux/arm32v7),linux/arm/v7,\
+                    $(if $(call eq,$(1),linux/arm64v8),linux/arm64/v8,\
+                    $(if $(call eq,$(1),linux/i386),   linux/386,\
+                                                       $(platform))))))
+
 
 
 
@@ -22,23 +29,17 @@ NODE_VER ?= $(strip \
 BUILD_REV ?= $(strip \
 	$(shell grep 'ARG build_rev=' Dockerfile | cut -d '=' -f2))
 
-NAMESPACES := instrumentisto \
-              ghcr.io/instrumentisto \
-              quay.io/instrumentisto
 NAME := haraka
+OWNER := $(or $(GITHUB_REPOSITORY_OWNER),instrumentisto)
+REGISTRIES := $(strip $(subst $(comma), ,\
+	$(shell grep -m1 'registry: \["' .github/workflows/ci.yml \
+	        | cut -d':' -f2 | tr -d '"][')))
 TAGS ?= $(HARAKA_VER)-node$(NODE_VER)-r$(BUILD_REV) \
         $(HARAKA_VER) \
         $(strip $(shell echo $(HARAKA_VER) | cut -d '.' -f1,2)) \
         $(strip $(shell echo $(HARAKA_VER) | cut -d '.' -f1)) \
         latest
 VERSION ?= $(word 1,$(subst $(comma), ,$(TAGS)))
-PLATFORMS ?= linux/amd64 \
-             linux/arm64 \
-             linux/arm/v6 \
-             linux/arm/v7 \
-             linux/ppc64le \
-             linux/s390x
-MAIN_PLATFORM ?= $(word 1,$(subst $(comma), ,$(PLATFORMS)))
 
 
 
@@ -49,9 +50,13 @@ MAIN_PLATFORM ?= $(word 1,$(subst $(comma), ,$(PLATFORMS)))
 
 image: docker.image
 
+manifest: docker.manifest
+
 push: docker.push
 
 release: git.release
+
+tags: docker.tags
 
 test: test.docker
 
@@ -62,30 +67,25 @@ test: test.docker
 # Docker commands #
 ###################
 
-docker-namespaces = $(strip $(if $(call eq,$(namespaces),),\
-                            $(NAMESPACES),$(subst $(comma), ,$(namespaces))))
-docker-tags = $(strip $(if $(call eq,$(tags),),\
-                      $(TAGS),$(subst $(comma), ,$(tags))))
-docker-platforms = $(strip $(if $(call eq,$(platforms),),\
-                           $(PLATFORMS),$(subst $(comma), ,$(platforms))))
+docker-registries = $(strip \
+	$(or $(subst $(comma), ,$(registries)),$(REGISTRIES)))
+docker-tags = $(strip $(or $(subst $(comma), ,$(tags)),$(TAGS)))
 
-# Runs `docker buildx build` command allowing to customize it for the purpose of
-# re-tagging or pushing.
-define docker.buildx
-	$(eval namespace := $(strip $(1)))
-	$(eval tag := $(strip $(2)))
-	$(eval platform := $(strip $(3)))
-	$(eval no-cache := $(strip $(4)))
-	$(eval args := $(strip $(5)))
-	$(eval github_url := $(strip $(or $(GITHUB_SERVER_URL),https://github.com)))
-	$(eval github_repo := $(strip $(or $(GITHUB_REPOSITORY),\
-	                                   instrumentisto/haraka-docker-image)))
-	docker buildx build --force-rm $(args) \
-		--platform $(strip \
-			$(if $(call eq,$(platform),linux/arm32v6),linux/arm/v6,\
-			$(if $(call eq,$(platform),linux/arm32v7),linux/arm/v7,\
-			$(if $(call eq,$(platform),linux/arm64v8),linux/arm64,\
-			                                          $(platform))))) \
+
+# Build single-platform Docker image with the given tag.
+#
+# Usage:
+#	make docker.image [tag=($(VERSION)|<docker-tag>)]] [no-cache=(no|yes)]
+#	                  [platform=<os>/<arch>]
+#	                  [NMAP_VER=<nmap-version>]
+#	                  [BUILD_REV=<build-revision>]
+
+github_url := $(strip $(or $(GITHUB_SERVER_URL),https://github.com))
+github_repo := $(strip $(or $(GITHUB_REPOSITORY),$(OWNER)/$(NAME)-docker-image))
+
+docker.image:
+	docker buildx build --force-rm \
+		$(if $(call eq,$(platform),),,--platform $(call dockerify,$(platform)))\
 		$(if $(call eq,$(no-cache),yes),--no-cache --pull,) \
 		--build-arg haraka_ver=$(HARAKA_VER) \
 		--build-arg node_ver=$(NODE_VER) \
@@ -95,76 +95,83 @@ define docker.buildx
 			$(shell git show --pretty=format:%H --no-patch)) \
 		--label org.opencontainers.image.version=$(subst v,,$(strip \
 			$(shell git describe --tags --dirty --match='v*'))) \
-		-t $(namespace)/$(NAME):$(tag) .
+		--load -t $(OWNER)/$(NAME):$(or $(tag),$(VERSION)) ./
+
+
+# Unite multiple single-platform Docker images as a multi-platform Docker image.
+#
+# WARNING: All the single-platform Docker images should be present on their
+#          remote registry. This is the limitation imposed by `docker manifest`
+#          command.
+#
+#	make docker.manifest [amend=(yes|no)] [push=(no|yes)]
+#	                     [of=($(VERSION)|<docker-tag-1>[,<docker-tag-2>...])]
+#	                     [tags=($(TAGS)|<docker-tag-1>[,<docker-tag-2>...])]
+#	                     [registries=($(REGISTRIES)|<prefix-1>[,<prefix-2>...])]
+
+docker.manifest:
+	$(foreach tag,$(subst $(comma), ,$(docker-tags)),\
+		$(foreach registry,$(subst $(comma), ,$(docker-registries)),\
+			$(call docker.manifest.create.do,$(or $(of),$(VERSION)),\
+			                                 $(registry),$(tag))))
+ifeq ($(push),yes)
+	$(foreach tag,$(subst $(comma), ,$(docker-tags)),\
+		$(foreach registry,$(subst $(comma), ,$(docker-registries)),\
+			$(call docker.manifest.push.do,$(registry),$(tag))))
+endif
+define docker.manifest.create.do
+	$(eval froms := $(strip $(1)))
+	$(eval repo := $(strip $(2)))
+	$(eval tag := $(strip $(3)))
+	docker manifest create $(if $(call eq,$(amend),no),,--amend) \
+		$(repo)/$(OWNER)/$(NAME):$(tag) \
+		$(foreach from,$(subst $(comma), ,$(froms)),\
+			$(repo)/$(OWNER)/$(NAME):$(from))
+endef
+define docker.manifest.push.do
+	$(eval repo := $(strip $(1)))
+	$(eval tag := $(strip $(2)))
+	docker manifest push $(repo)/$(OWNER)/$(NAME):$(tag)
 endef
 
 
-# Pre-build cache for Docker image builds.
-#
-# WARNING: This command doesn't apply tag to the built Docker image, just
-#          creates a build cache. To produce a Docker image with a tag, use
-#          `docker.tag` command right after running this one.
+# Manually push single-platform Docker images to container registries.
 #
 # Usage:
-#	make docker.build.cache
-#		[platforms=($(PLATFORMS)|<platform-1>[,<platform-2>...])]
-#		[no-cache=(no|yes)]
-#		[HARAKA_VER=<haraka-version>]
-#		[NODE_VER=<node-version>]
-#		[BUILD_REV=<build-revision>]
-
-docker.build.cache:
-	$(call docker.buildx,\
-		instrumentisto,\
-		build-cache,\
-		$(shell echo "$(docker-platforms)" | tr -s '[:blank:]' ','),\
-		$(no-cache),\
-		--output 'type=image$(comma)push=false')
-
-
-# Build Docker image on the given platform with the given tag.
-#
-# Usage:
-#	make docker.image
-#		[tag=($(VERSION)|<tag>)]
-#		[platform=($(MAIN_PLATFORM)|<platform>)]
-#		[no-cache=(no|yes)]
-#		[HARAKA_VER=<haraka-version>]
-#		[NODE_VER=<node-version>]
-#		[BUILD_REV=<build-revision>]
-
-docker.image:
-	$(call docker.buildx,\
-		instrumentisto,\
-		$(if $(call eq,$(tag),),$(VERSION),$(tag)),\
-		$(if $(call eq,$(platform),),$(MAIN_PLATFORM),$(platform)),\
-		$(no-cache),\
-		--load)
-
-
-# Push Docker images to their repositories (container registries),
-# along with the required multi-arch manifests.
-#
-# Usage:
-#	make docker.push
-#		[namespaces=($(NAMESPACES)|<prefix-1>[,<prefix-2>...])]
-#		[tags=($(TAGS)|<tag-1>[,<tag-2>...])]
-#		[platforms=($(PLATFORMS)|<platform-1>[,<platform-2>...])]
-#		[HARAKA_VER=<haraka-version>]
-#		[NODE_VER=<node-version>]
-#		[BUILD_REV=<build-revision>]
+#	make docker.push [tags=($(TAGS)|<docker-tag-1>[,<docker-tag-2>...])]
+#	                 [registries=($(REGISTRIES)|<prefix-1>[,<prefix-2>...])]
 
 docker.push:
-	$(foreach namespace,$(docker-namespaces),\
-		$(foreach tag,$(docker-tags),\
-			$(call docker.buildx,\
-				$(namespace),\
-				$(tag),\
-				$(shell echo "$(docker-platforms)" | tr -s '[:blank:]' ','),,\
-				--push)))
+	$(foreach tag,$(subst $(comma), ,$(docker-tags)),\
+		$(foreach registry,$(subst $(comma), ,$(docker-registries)),\
+			$(call docker.push.do,$(registry),$(tag))))
+define docker.push.do
+	$(eval repo := $(strip $(1)))
+	$(eval tag := $(strip $(2)))
+	docker push $(repo)/$(OWNER)/$(NAME):$(tag)
+endef
 
 
-# Save Docker images to a tarball file.
+# Tag single-platform Docker image with the given tags.
+#
+# Usage:
+#	make docker.tags [of=($(VERSION)|<docker-tag>)]
+#	                 [tags=($(TAGS)|<docker-tag-1>[,<docker-tag-2>...])]
+#	                 [registries=($(REGISTRIES)|<prefix-1>[,<prefix-2>...])]
+
+docker.tags:
+	$(foreach tag,$(subst $(comma), ,$(docker-tags)),\
+		$(foreach registry,$(subst $(comma), ,$(docker-registries)),\
+			$(call docker.tags.do,$(or $(of),$(VERSION)),$(registry),$(tag))))
+define docker.tags.do
+	$(eval from := $(strip $(1)))
+	$(eval repo := $(strip $(2)))
+	$(eval to := $(strip $(3)))
+	docker tag $(OWNER)/$(NAME):$(from) $(repo)/$(OWNER)/$(NAME):$(to)
+endef
+
+
+# Save single-platform Docker images to a tarball file.
 #
 # Usage:
 #	make docker.tar [to-file=(.cache/image.tar|<file-path>)]
@@ -176,13 +183,13 @@ docker.tar:
 	@mkdir -p $(dir $(docker-tar-file))
 	docker save -o $(docker-tar-file) \
 		$(foreach tag,$(subst $(comma), ,$(or $(tags),$(VERSION))),\
-			instrumentisto/$(NAME):$(tag))
+			$(OWNER)/$(NAME):$(tag))
 
 
 docker.test: test.docker
 
 
-# Load Docker images from a tarball file.
+# Load single-platform Docker images from a tarball file.
 #
 # Usage:
 #	make docker.untar [from-file=(.cache/image.tar|<file-path>)]
@@ -203,38 +210,19 @@ docker.untar:
 #	https://github.com/bats-core/bats-core
 #
 # Usage:
-#	make test.docker
-#		[tag=($(VERSION)|<tag>)]
-#		[platforms=($(MAIN_PLATFORM)|@all|<platform-1>[,<platform-2>...])]
-#		[( [build=no]
-#		 | build=yes [HARAKA_VER=<haraka-version>]
-#		             [NODE_VER=<node-version>]
-#		             [BUILD_REV=<build-revision>] )]
+#	make test.docker [tag=($(VERSION)|<docker-tag>)]
+#	                 [platform=(linux/amd64|<os>/<arch>)]
 
-test-docker-platforms = $(strip $(if $(call eq,$(platforms),),$(MAIN_PLATFORM),\
-                                $(if $(call eq,$(platforms),@all),$(PLATFORMS),\
-                                $(docker-platforms))))
 test.docker:
 ifeq ($(wildcard node_modules/.bin/bats),)
 	@make npm.install
 endif
-	$(foreach platform,$(test-docker-platforms),\
-		$(call test.docker.do,\
-			$(if $(call eq,$(tag),),$(VERSION),$(tag)),\
-			$(platform)))
-define test.docker.do
-	$(eval tag := $(strip $(1)))
-	$(eval platform := $(strip $(2)))
-	$(if $(call eq,$(build),yes),\
-		@make docker.image no-cache=no tag=$(tag) platform=$(platform) \
-			HARAKA_VER=$(HARAKA_VER) \
-			NODE_VER=$(NODE_VER) \
-			BUILD_REV=$(BUILD_REV) ,)
-	IMAGE=instrumentisto/$(NAME):$(tag) PLATFORM=$(platform) \
+	IMAGE=$(OWNER)/$(NAME):$(or $(tag),$(VERSION)) \
+	PLATFORM=$(or $(call dockerify,$(platform)),linux/amd64) \
 	node_modules/.bin/bats \
 		--timing $(if $(call eq,$(CI),),--pretty,--formatter tap) \
+		--print-output-on-failure \
 		tests/main.bats
-endef
 
 
 
@@ -246,8 +234,7 @@ endef
 # Resolve project NPM dependencies.
 #
 # Usage:
-#	make npm.install
-#		[dockerized=(no|yes)]
+#	make npm.install [dockerized=(no|yes)]
 
 npm.install:
 ifeq ($(dockerized),yes)
@@ -270,7 +257,7 @@ endif
 # Usage:
 #	make git.release [ver=($(VERSION)|<proj-ver>)]
 
-git-release-tag = v$(strip $(if $(call eq,$(ver),),$(VERSION),$(ver)))
+git-release-tag = v$(strip $(or $(ver),$(VERSION)))
 
 git.release:
 ifeq ($(shell git rev-parse $(git-release-tag) >/dev/null 2>&1 && echo "ok"),ok)
@@ -286,9 +273,9 @@ endif
 # .PHONY section #
 ##################
 
-.PHONY: image push release test \
-        docker.build.cache docker.image docker.push docker.tar docker.test \
-        docker.untar\
+.PHONY: image manifest push release test \
+        docker.image docker.manifest docker.push docker.tags docker.tar \
+        docker.test docker.untar \
         git.release \
         npm.install \
         test.docker
