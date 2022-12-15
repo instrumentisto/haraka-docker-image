@@ -2,14 +2,14 @@ Haraka Docker image
 ===================
 
 [![Release](https://img.shields.io/github/v/release/instrumentisto/haraka-docker-image "Release")](https://github.com/instrumentisto/haraka-docker-image/releases)
-[![CI](https://github.com/instrumentisto/haraka-docker-image/workflows/CI/badge.svg?branch=master "CI")](https://github.com/instrumentisto/haraka-docker-image/actions?query=workflow%3ACI+branch%3Amaster)
+[![CI](https://github.com/instrumentisto/haraka-docker-image/workflows/CI/badge.svg?branch=main "CI")](https://github.com/instrumentisto/haraka-docker-image/actions?query=workflow%3ACI+branch%3Amain)
 [![Docker Hub](https://img.shields.io/docker/pulls/instrumentisto/haraka?label=Docker%20Hub%20pulls "Docker Hub pulls")](https://hub.docker.com/r/instrumentisto/haraka)
 
 [Docker Hub](https://hub.docker.com/r/instrumentisto/haraka)
 | [GitHub Container Registry](https://github.com/orgs/instrumentisto/packages/container/package/haraka)
 | [Quay.io](https://quay.io/repository/instrumentisto/haraka)
 
-[Changelog](https://github.com/instrumentisto/haraka-docker-image/blob/master/CHANGELOG.md)
+[Changelog](https://github.com/instrumentisto/haraka-docker-image/blob/main/CHANGELOG.md)
 
 
 
@@ -183,7 +183,7 @@ If you have any problems with or questions about this image, please contact us t
 [15]: https://news.ycombinator.com/item?id=10782897
 [91]: https://github.com/haraka/Haraka/blob/master/LICENSE
 [92]: https://github.com/instrumentisto/haraka-docker-image
-[93]: https://github.com/instrumentisto/haraka-docker-image/blob/master/LICENSE.md
+[93]: https://github.com/instrumentisto/haraka-docker-image/blob/main/LICENSE.md
 [101]: https://github.com/instrumentisto/haraka-docker-image/issues
 
-[d1]: https://github.com/instrumentisto/haraka-docker-image/blob/master/Dockerfile
+[d1]: https://github.com/instrumentisto/haraka-docker-image/blob/main/Dockerfile
