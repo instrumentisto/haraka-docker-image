@@ -2,17 +2,18 @@
 
 
 @test "Built on correct arch" {
-  run docker run --rm --platform $PLATFORM --entrypoint sh $IMAGE -c \
+  run docker run --rm --pull never --platform $PLATFORM \
+                 --entrypoint sh $IMAGE -c \
     'uname -m'
   [ "$status" -eq 0 ]
   if [ "$PLATFORM" = "linux/amd64" ]; then
     [ "$output" = "x86_64" ]
-  elif [ "$PLATFORM" = "linux/arm64" ]; then
-    [ "$output" = "aarch64" ]
   elif [ "$PLATFORM" = "linux/arm/v6" ]; then
     [ "$output" = "armv7l" ]
   elif [ "$PLATFORM" = "linux/arm/v7" ]; then
     [ "$output" = "armv7l" ]
+  elif [ "$PLATFORM" = "linux/arm64/v8" ]; then
+    [ "$output" = "aarch64" ]
   else
     [ "$output" = "$(echo $PLATFORM | cut -d '/' -f2-)" ]
   fi
@@ -20,13 +21,15 @@
 
 
 @test "Haraka is installed" {
-  run docker run --rm --platform $PLATFORM --entrypoint sh $IMAGE -c \
+  run docker run --rm --pull never --platform $PLATFORM \
+                 --entrypoint sh $IMAGE -c \
     'which haraka'
   [ "$status" -eq 0 ]
 }
 
 @test "Haraka runs ok" {
-  run docker run --rm --platform $PLATFORM --entrypoint sh $IMAGE -c \
+  run docker run --rm --pull never --platform $PLATFORM \
+                      --entrypoint sh $IMAGE -c \
     'haraka -o -c /etc/haraka'
   [ "$status" -eq 0 ]
 }
@@ -37,7 +40,8 @@
   [ ! "$output" = '' ]
   expected="$output"
 
-  run docker run --rm --platform $PLATFORM --entrypoint sh $IMAGE -c \
+  run docker run --rm --pull never --platform $PLATFORM \
+                 --entrypoint sh $IMAGE -c \
     "haraka --version | grep 'Version: ' | cut -d ':' -f2 | tr -d ' '"
   [ "$status" -eq 0 ]
   [ ! "$output" = '' ]
@@ -48,7 +52,7 @@
 
 
 @test "APK_INSTALL_PACKAGES installs packages" {
-  run docker run --rm --platform $PLATFORM \
+  run docker run --rm --pull never --platform $PLATFORM \
                  -e APK_INSTALL_PACKAGES=openssl,rclone \
              $IMAGE apk list
   [ "$status" -eq 0 ]
