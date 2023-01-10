@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [2.8.28-node18-r4] · 2023-01-10
+[2.8.28-node18-r4]: /../../tree/v2.8.28-node18-r4
+
+[Diff](/../../compare/v2.8.28-node18-r3...v2.8.28-node18-r4)
+
+### Security updated
+
+- [Alpine Linux] 3.17.1: <https://github.com/docker-library/official-images/commit/0fea6bf535f1a863460c1d8c2c381e1e548fd220>
+
+
+
+
 ## [2.8.28-node18-r3] · 2022-12-15
 [2.8.28-node18-r3]: /../../tree/v2.8.28-node18-r3
 
