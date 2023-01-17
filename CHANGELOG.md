@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [3.0.0-node18-r0] · 2023-01-17
+[3.0.0-node18-r0]: /../../tree/v3.0.0-node18-r0
+
+[Diff](/../../compare/v2.8.28-node18-r4...v3.0.0-node18-r0)
+
+### Upgraded
+
+- [Haraka] 3.0.0: <https://github.com/haraka/Haraka/releases/tag/3.0.0>
+
+
+
+
 ## [2.8.28-node18-r4] · 2023-01-10
 [2.8.28-node18-r4]: /../../tree/v2.8.28-node18-r4
 
