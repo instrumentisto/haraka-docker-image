@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [3.0.1-node18-r3] · 2023-06-15
+[3.0.1-node18-r3]: /../../tree/v3.0.1-node18-r3
+
+[Diff](/../../compare/v3.0.1-node18-r2...v3.0.1-node18-r3)
+
+### Upgraded
+
+- [Alpine Linux] 3.18: <https://www.alpinelinux.org/posts/Alpine-3.18.0-released.html>
+
+
+
+
 ## [3.0.1-node18-r2] · 2023-03-31
 [3.0.1-node18-r2]: /../../tree/v3.0.1-node18-r2
 
