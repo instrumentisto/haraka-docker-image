@@ -61,7 +61,7 @@ All user visible changes to this project will be documented in this file. This p
 
 ### Upgraded
 
-- [Haraka] 3.0.1: <https://github.com/haraka/Haraka/releases/tag/3.0.1>
+- [Haraka] 3.0.1: <https://github.com/haraka/Haraka/releases/tag/v3.0.1>
 
 
 
