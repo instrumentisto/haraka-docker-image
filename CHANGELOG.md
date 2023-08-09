@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [3.0.2-node18-r1] · 2023-08-09
+[3.0.2-node18-r1]: /../../tree/v3.0.2-node18-r1
+
+[Diff](/../../compare/v3.0.2-node18-r0...v3.0.2-node18-r1)
+
+### Upgraded
+
+- [Alpine Linux] 3.18.3: <https://github.com/docker-library/official-images/commit/3cd1b36bebfa5684e9c1ab89d5673b32453a05d9>
+
+
+
+
 ## [3.0.2-node18-r0] · 2023-06-19
 [3.0.2-node18-r0]: /../../tree/v3.0.2-node18-r0
 
