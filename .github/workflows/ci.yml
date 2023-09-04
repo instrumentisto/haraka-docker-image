@@ -33,7 +33,7 @@ jobs:
           - s390x
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # for correct image labeling via `git describe --tags`
       - uses: docker/setup-qemu-action@v2
@@ -73,7 +73,7 @@ jobs:
           - s390x
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: docker/setup-qemu-action@v2
       - run: make npm.install
 
@@ -114,7 +114,7 @@ jobs:
                     && secrets.DOCKERHUB_BOT_USER == ''))
              ) }}" >> $GITHUB_OUTPUT
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         if: ${{ steps.skip.outputs.no == 'true' }}
 
       - name: Parse Docker image name from Git repository name
@@ -212,7 +212,7 @@ jobs:
     needs: ["push"]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Parse version from Git tag
         id: version
