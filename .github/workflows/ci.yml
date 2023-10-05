@@ -31,12 +31,25 @@ jobs:
           - arm64v8
           - ppc64le
           - s390x
-    runs-on: ubuntu-latest
+    runs-on: ${{ (matrix.arch == 's390x' && 'macos')
+                                         || 'ubuntu' }}-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # for correct image labeling via `git describe --tags`
+      - name: Setup Docker for MacOS
+        run: |
+          set -ex
+          brew install colima docker docker-buildx
+          mkdir -p /Users/runner/.docker/cli-plugins/
+          ln -sfn /usr/local/opt/docker-buildx/bin/docker-buildx \
+                  /Users/runner/.docker/cli-plugins/docker-buildx
+          colima start
+        if: ${{ matrix.arch == 's390x' }}
+      - uses: docker/setup-qemu-action@v3
+        if: ${{ matrix.arch == 's390x' }}
       - uses: docker/setup-buildx-action@v3
+        if: ${{ matrix.arch != 's390x' }}
 
       - run: make docker.image no-cache=yes
                   platform=${{ matrix.os }}/${{ matrix.arch }}

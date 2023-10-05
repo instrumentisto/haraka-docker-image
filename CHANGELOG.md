@@ -6,7 +6,7 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## [3.0.2-node18-r2] · 2023-10-04
+## [3.0.2-node18-r2] · 2023-10-05
 [3.0.2-node18-r2]: /../../tree/v3.0.2-node18-r2
 
 [Diff](/../../compare/v3.0.2-node18-r1...v3.0.2-node18-r2)
