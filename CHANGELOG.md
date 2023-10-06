@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [3.0.2-node20-r0] · 2023-10-06
+[3.0.2-node20-r0]: /../../tree/v3.0.2-node20-r0
+
+[Diff](/../../compare/v3.0.2-node18-r2...v3.0.2-node20-r0)
+
+### Upgraded
+
+- [Node.js] 20: <https://github.com/nodejs/node/blob/v20.0.0/doc/changelogs/CHANGELOG_V20.md#20.0.0>
+
+
+
+
 ## [3.0.2-node18-r2] · 2023-10-05
 [3.0.2-node18-r2]: /../../tree/v3.0.2-node18-r2
 
