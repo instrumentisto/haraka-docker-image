@@ -6,14 +6,14 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## [3.0.2-node20-r0] · 2023-10-06
-[3.0.2-node20-r0]: /../../tree/v3.0.2-node20-r0
+## [3.0.2-node21-r0] · 2023-10-19
+[3.0.2-node21-r0]: /../../tree/v3.0.2-node21-r0
 
-[Diff](/../../compare/v3.0.2-node18-r2...v3.0.2-node20-r0)
+[Diff](/../../compare/v3.0.2-node18-r2...v3.0.2-node21-r0)
 
 ### Upgraded
 
-- [Node.js] 20: <https://github.com/nodejs/node/blob/v20.0.0/doc/changelogs/CHANGELOG_V20.md#20.0.0>
+- [Node.js] 21: <https://github.com/nodejs/node/blob/v21.0.0/doc/changelogs/CHANGELOG_V21.md#2023-10-17-version-2100-current-rafaelgss-and-targos>
 
 
 
