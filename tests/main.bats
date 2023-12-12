@@ -53,7 +53,7 @@
 
 @test "APK_INSTALL_PACKAGES installs packages" {
   run docker run --rm --pull never --platform $PLATFORM \
-                 -e APK_INSTALL_PACKAGES=openssl,rclone \
+                 -e APK_INSTALL_PACKAGES=openssl,make \
              $IMAGE apk list
   [ "$status" -eq 0 ]
   [ ! "$output" = '' ]
@@ -63,7 +63,7 @@
   [ "$status" -eq 0 ]
   [ ! "$output" = '' ]
 
-  run sh -c "printf \"$actual\" | grep -E '^rclone-.*\[installed\]$'"
+  run sh -c "printf \"$actual\" | grep -E '^make-.*\[installed\]$'"
   [ "$status" -eq 0 ]
   [ ! "$output" = '' ]
 }
