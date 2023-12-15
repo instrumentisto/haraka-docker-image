@@ -57,7 +57,7 @@ jobs:
 
       - run: make docker.tar to-file=.cache/image.tar
                   tags=build-${{ github.run_number }}-${{ matrix.os }}-${{ matrix.arch }}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.os }}-${{ matrix.arch }}-${{ github.run_number }}
           path: .cache/image.tar
@@ -89,7 +89,7 @@ jobs:
       - uses: docker/setup-qemu-action@v3
       - run: make npm.install
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: ${{ matrix.os }}-${{ matrix.arch }}-${{ github.run_number }}
           path: .cache/
@@ -142,7 +142,7 @@ jobs:
           text: ${{ github.ref }}
           regex: '^refs/tags/v(.+)$'
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           path: .cache/
         if: ${{ steps.skip.outputs.no == 'true' }}
