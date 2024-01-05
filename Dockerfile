@@ -1,9 +1,9 @@
 # https://hub.docker.com/_/node
-ARG node_ver=18
+ARG node_ver=21
 FROM node:${node_ver}-alpine3.19
 
 ARG haraka_ver=3.0.2
-ARG build_rev=4
+ARG build_rev=0
 
 
 COPY rootfs /
