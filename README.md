@@ -23,7 +23,7 @@ Haraka Docker image
 
 ## Supported platforms
 
-- `linux`: `amd64`, `arm32v6`, `arm32v7`, `arm64v8`, `ppc64le`, `s390x`
+- `linux`: `amd64`, `arm64v8`, `ppc64le`
 
 
 
