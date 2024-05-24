@@ -1,6 +1,8 @@
 # https://hub.docker.com/_/node
 ARG node_ver=22
-FROM node:${node_ver}-alpine3.20
+# TODO: Return to `-alpine` once nodejs/docker-node#2088 is fixed:
+#       https://github.com/nodejs/docker-node/issues/2088
+FROM node:${node_ver}-alpine
 
 ARG haraka_ver=3.0.3
 ARG build_rev=0
