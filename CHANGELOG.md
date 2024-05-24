@@ -6,13 +6,14 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## [3.0.3-node21-r1] · 2024-05-24
-[3.0.3-node21-r1]: /../../tree/v3.0.3-node21-r1
+## [3.0.3-node22-r0] · 2024-05-24
+[3.0.3-node22-r0]: /../../tree/v3.0.3-node22-r0
 
-[Diff](/../../compare/v3.0.3-node21-r0...v3.0.3-node21-r1)
+[Diff](/../../compare/v3.0.3-node21-r0...v3.0.3-node22-r0)
 
 ### Upgraded
 
+- [Node.js] 22: <https://github.com/nodejs/node/blob/v22.0.0/doc/changelogs/CHANGELOG_V22.md#2024-04-24-version-2200-current-rafaelgss-and-marco-ippolito>
 - [Alpine Linux] 3.20: <https://www.alpinelinux.org/posts/Alpine-3.20.0-released.html>
 
 
