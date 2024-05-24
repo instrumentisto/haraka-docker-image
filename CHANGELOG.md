@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [3.0.3-node21-r1] · 2024-05-24
+[3.0.3-node21-r1]: /../../tree/v3.0.3-node21-r1
+
+[Diff](/../../compare/v3.0.3-node21-r0...v3.0.3-node21-r1)
+
+### Upgraded
+
+- [Alpine Linux] 3.20: <https://www.alpinelinux.org/posts/Alpine-3.20.0-released.html>
+
+
+
+
 ## [3.0.3-node21-r0] · 2024-02-09
 [3.0.3-node21-r0]: /../../tree/v3.0.3-node21-r0
 
@@ -37,7 +49,7 @@ All user visible changes to this project will be documented in this file. This p
 
 ### Upgraded
 
-- [Alpine Linux] 3.19: <https://www.alpinelinux.org/posts/Alpine-3.18.0-released.html>
+- [Alpine Linux] 3.19: <https://www.alpinelinux.org/posts/Alpine-3.19.0-released.html>
 
 
 
