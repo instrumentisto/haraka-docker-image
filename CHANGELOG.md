@@ -25,7 +25,7 @@ All user visible changes to this project will be documented in this file. This p
 - [Alpine Linux] 3.20.2: <https://github.com/docker-library/official-images/commit/1a994d381a873e6f9579843dd1eebf64bc50e831>
 
 [fe8d7f0d]: /../../commit/fe8d7f0db7243ae5803ad7f661b531f22f99ddfa
-[nodejs/docker-node#1973]: https://github.com/nodejs/docker-node/issues/2107
+[nodejs/docker-node#2107]: https://github.com/nodejs/docker-node/issues/2107
 
 
 
