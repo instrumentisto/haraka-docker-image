@@ -11,6 +11,10 @@ All user visible changes to this project will be documented in this file. This p
 
 [Diff](/../../compare/v3.0.3-node21-r0...v3.0.3-node22-r0)
 
+### BC Breaks
+
+- Removed support for `ppc64le` platform ([fe8d7f0d], [nodejs/docker-node#2107]).
+
 ### Upgraded
 
 - [Node.js] 22: <https://github.com/nodejs/node/blob/v22.0.0/doc/changelogs/CHANGELOG_V22.md#2024-04-24-version-2200-current-rafaelgss-and-marco-ippolito>
@@ -19,6 +23,9 @@ All user visible changes to this project will be documented in this file. This p
 ### Security updated
 
 - [Alpine Linux] 3.20.2: <https://github.com/docker-library/official-images/commit/1a994d381a873e6f9579843dd1eebf64bc50e831>
+
+[fe8d7f0d]: /../../commit/fe8d7f0db7243ae5803ad7f661b531f22f99ddfa
+[nodejs/docker-node#1973]: https://github.com/nodejs/docker-node/issues/2107
 
 
 
