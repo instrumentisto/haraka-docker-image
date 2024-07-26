@@ -18,7 +18,7 @@ All user visible changes to this project will be documented in this file. This p
 
 ### Security updated
 
-- [Alpine Linux] 3.20.1: <https://github.com/docker-library/official-images/commit/9434c6383adc38dd26c6c1b098bed1981a6d9e7f>
+- [Alpine Linux] 3.20.2: <https://github.com/docker-library/official-images/commit/1a994d381a873e6f9579843dd1eebf64bc50e831>
 
 
 
