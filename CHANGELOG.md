@@ -6,7 +6,7 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## [3.0.4-node22-r0] · 2024-08-26
+## [3.0.4-node22-r0] · 2024-??-?? (unreleased)
 [3.0.4-node22-r0]: /../../tree/v3.0.4-node22-r0
 
 [Diff](/../../compare/v3.0.3-node22-r0...v3.0.4-node22-r0)
@@ -14,6 +14,10 @@ All user visible changes to this project will be documented in this file. This p
 ### Upgraded
 
 - [Haraka] 3.0.4: <https://github.com/haraka/Haraka/releases/tag/3.0.4>
+
+### Security updated
+
+- [Alpine Linux] 3.20.3: <https://github.com/docker-library/official-images/commit/94a433c3550a63993b4d7a2081ae87dfe1f7f6bf>
 
 
 
