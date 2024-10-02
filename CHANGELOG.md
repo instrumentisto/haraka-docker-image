@@ -6,14 +6,14 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## [3.0.4-node22-r0] · 2024-??-?? (unreleased)
-[3.0.4-node22-r0]: /../../tree/v3.0.4-node22-r0
+## [3.0.5-node22-r0] · 2024-10-02
+[3.0.5-node22-r0]: /../../tree/v3.0.5-node22-r0
 
-[Diff](/../../compare/v3.0.3-node22-r0...v3.0.4-node22-r0)
+[Diff](/../../compare/v3.0.3-node22-r0...v3.0.5-node22-r0)
 
 ### Upgraded
 
-- [Haraka] 3.0.4: <https://github.com/haraka/Haraka/releases/tag/3.0.4>
+- [Haraka] 3.0.5: <https://github.com/haraka/Haraka/blob/v3.0.5/Changes.md#305---2024-09-27>
 
 ### Security updated
 
