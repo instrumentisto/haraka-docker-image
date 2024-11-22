@@ -6,10 +6,14 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## [3.0.5-node22-r0] · 2024-10-02
-[3.0.5-node22-r0]: /../../tree/v3.0.5-node22-r0
+## [main] · unreleased
+[main]: /../../tree/main
 
-[Diff](/../../compare/v3.0.3-node22-r0...v3.0.5-node22-r0)
+[Diff](/../../compare/v3.0.3-node22-r0...main)
+
+### Added
+
+- Support for `arm32v6`, `arm32v7` and `s390x` platforms.
 
 ### Upgraded
 

@@ -18,6 +18,12 @@ RUN apk update \
  && apk add --no-cache --virtual .build-deps \
         python3 g++ make \
     \
+ # TODO: Remove once `node` image ships at least 10.9.1 `npm` version.
+ # Install latest `npm` version to include npm/npm-install-checks#120:
+ # https://github.com/npm/npm-install-checks/pull/120
+ && npm install -g npm@latest \
+ && npm --version \
+    \
  # Build and install Haraka
  && npm install -g Haraka@${haraka_ver} \
  && haraka -i /etc/haraka/ \

@@ -24,14 +24,14 @@ jobs:
       fail-fast: false
       matrix:
         os: ["linux"]
-        # TODO: Return `arm32v6`, `arm32v7` and `s390x` once
-        #       nodejs/docker-node#1973 is resolved:
-        #       https://github.com/nodejs/docker-node/issues/1973
         # TODO: Return `ppc64le` once nodejs/docker-node#2107 is resolved:
         #       https://github.com/nodejs/docker-node/issues/2107
         arch:
           - amd64
+          - arm32v6
+          - arm32v7
           - arm64v8
+          - s390x
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -64,14 +64,14 @@ jobs:
       fail-fast: false
       matrix:
         os: ["linux"]
-        # TODO: Return `arm32v6`, `arm32v7` and `s390x` once
-        #       nodejs/docker-node#1973 is resolved:
-        #       https://github.com/nodejs/docker-node/issues/1973
         # TODO: Return `ppc64le` once nodejs/docker-node#2107 is resolved:
         #       https://github.com/nodejs/docker-node/issues/2107
         arch:
           - amd64
+          - arm32v6
+          - arm32v7
           - arm64v8
+          - s390x
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -153,15 +153,14 @@ jobs:
         if: ${{ steps.skip.outputs.no == 'true' }}
 
       - name: Tag and push single-platform images
-
-        # TODO: Return `arm32v6`, `arm32v7` and `s390x` once
-        #       nodejs/docker-node#1973 is resolved:
-        #       https://github.com/nodejs/docker-node/issues/1973
         # TODO: Return `ppc64le` once nodejs/docker-node#2107 is resolved:
         #       https://github.com/nodejs/docker-node/issues/2107
         run: |
           for platform in linux-amd64 \
-                          linux-arm64v8
+                          linux-arm32v6 \
+                          linux-arm32v7 \
+                          linux-arm64v8 \
+                          linux-s390x
           do
             make docker.untar \
                  from-file=.cache/$platform-${{ github.run_number }}/image.tar
@@ -175,15 +174,15 @@ jobs:
           done
         if: ${{ steps.skip.outputs.no == 'true' }}
       - name: Tag and push multi-platform images
-        # TODO: Return `arm32v6`, `arm32v7` and `s390x` once
-        #       nodejs/docker-node#1973 is resolved:
-        #       https://github.com/nodejs/docker-node/issues/1973
         # TODO: Return `ppc64le` once nodejs/docker-node#2107 is resolved:
         #       https://github.com/nodejs/docker-node/issues/2107
         run: make docker.manifest push=yes
                   registries=${{ matrix.registry }}
                   of='${{ steps.version.outputs.group1 }}-linux-amd64
-                      ${{ steps.version.outputs.group1 }}-linux-arm64v8'
+                      ${{ steps.version.outputs.group1 }}-linux-arm32v6
+                      ${{ steps.version.outputs.group1 }}-linux-arm32v7
+                      ${{ steps.version.outputs.group1 }}-linux-arm64v8
+                      ${{ steps.version.outputs.group1 }}-linux-s390x'
         if: ${{ steps.skip.outputs.no == 'true' }}
 
       # On GitHub Container Registry README is automatically updated on pushes.
