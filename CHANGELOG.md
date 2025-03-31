@@ -6,14 +6,15 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## [3.1.0-node22-r0] · 2025-03-31
-[3.1.0-node22-r0]: /../../tree/v3.1.0-node22-r0
+## [3.1.0-node23-r0] · 2025-03-31
+[3.1.0-node23-r0]: /../../tree/v3.1.0-node23-r0
 
-[Diff](/../../compare/v3.0.3-node22-r0...v3.1.0-node22-r0)
+[Diff](/../../compare/v3.0.3-node22-r0...v3.1.0-node23-r0)
 
 ### Upgraded
 
 - [Haraka] 3.1.0: <https://github.com/haraka/Haraka/blob/v3.1.0/Changes.md#310---2025-01-30>
+- [Node.js] 23: <https://github.com/nodejs/node/blob/v23.0.0/doc/changelogs/CHANGELOG_V23.md#2024-10-16-version-2300-current-rafaelgss>
 - [Alpine Linux] 3.21: <https://www.alpinelinux.org/posts/Alpine-3.21.0-released.html>
 
 
