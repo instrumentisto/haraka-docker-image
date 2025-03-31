@@ -6,19 +6,15 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## [3.0.5-node22-r0] · 2024-12-11
-[3.0.5-node22-r0]: /../../tree/v3.0.5-node22-r0
+## [3.1.0-node22-r0] · 2025-03-31
+[3.1.0-node22-r0]: /../../tree/v3.1.0-node22-r0
 
-[Diff](/../../compare/v3.0.3-node22-r0...v3.0.5-node22-r0)
+[Diff](/../../compare/v3.0.3-node22-r0...v3.1.0-node22-r0)
 
 ### Upgraded
 
-- [Haraka] 3.0.5: <https://github.com/haraka/Haraka/blob/v3.0.5/Changes.md#305---2024-09-27>
+- [Haraka] 3.1.0: <https://github.com/haraka/Haraka/blob/v3.1.0/Changes.md#310---2025-01-30>
 - [Alpine Linux] 3.21: <https://www.alpinelinux.org/posts/Alpine-3.21.0-released.html>
-
-### Security updated
-
-- [Alpine Linux] 3.20.3: <https://github.com/docker-library/official-images/commit/94a433c3550a63993b4d7a2081ae87dfe1f7f6bf>
 
 
 
