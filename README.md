@@ -2,7 +2,7 @@ Haraka Docker image
 ===================
 
 [![Release](https://img.shields.io/github/v/release/instrumentisto/haraka-docker-image "Release")](https://github.com/instrumentisto/haraka-docker-image/releases)
-[![CI](https://github.com/instrumentisto/haraka-docker-image/workflows/CI/badge.svg?branch=main "CI")](https://github.com/instrumentisto/haraka-docker-image/actions?query=workflow%3ACI+branch%3Amain)
+[![CI](https://github.com/instrumentisto/haraka-docker-image/actions/workflows/ci.yml/badge.svg?branch=main "CI")](https://github.com/instrumentisto/haraka-docker-image/actions?query=workflow%3ACI+branch%3Amain)
 [![Docker Hub](https://img.shields.io/docker/pulls/instrumentisto/haraka?label=Docker%20Hub%20pulls "Docker Hub pulls")](https://hub.docker.com/r/instrumentisto/haraka)
 
 [Docker Hub](https://hub.docker.com/r/instrumentisto/haraka)
