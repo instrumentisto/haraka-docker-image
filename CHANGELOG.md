@@ -6,6 +6,19 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## main
+
+[Diff](/../../compare/v3.1.0-node23-r0...main)
+
+### Added
+
+- Support for `arm32v6` and `arm32v7` platforms. ([nodejs/docker-node#1946])
+
+[nodejs/docker-node#1946]: https://github.com/nodejs/docker-node/issues/1946
+
+
+
+
 ## [3.1.0-node23-r0] · 2025-03-31
 [3.1.0-node23-r0]: /../../tree/v3.1.0-node23-r0
 
@@ -27,7 +40,7 @@ All user visible changes to this project will be documented in this file. This p
 
 ### BC Breaks
 
-- Removed support for `ppc64le` platform ([fe8d7f0d], [nodejs/docker-node#2107]).
+- Removed support for `ppc64le` platform. ([fe8d7f0d], [nodejs/docker-node#2107])
 
 ### Upgraded
 

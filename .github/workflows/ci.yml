@@ -24,13 +24,14 @@ jobs:
       fail-fast: false
       matrix:
         os: ["linux"]
-        # TODO: Return `arm32v6`, `arm32v7` and `s390x` once
-        #       nodejs/docker-node#1973 is resolved:
+        # TODO: Return `s390x` once nodejs/docker-node#1973 is resolved:
         #       https://github.com/nodejs/docker-node/issues/1973
         # TODO: Return `ppc64le` once nodejs/docker-node#2107 is resolved:
         #       https://github.com/nodejs/docker-node/issues/2107
         arch:
           - amd64
+          - arm32v6
+          - arm32v7
           - arm64v8
     runs-on: ubuntu-latest
     steps:
@@ -64,13 +65,14 @@ jobs:
       fail-fast: false
       matrix:
         os: ["linux"]
-        # TODO: Return `arm32v6`, `arm32v7` and `s390x` once
-        #       nodejs/docker-node#1973 is resolved:
+        # TODO: Return `s390x` once nodejs/docker-node#1973 is resolved:
         #       https://github.com/nodejs/docker-node/issues/1973
         # TODO: Return `ppc64le` once nodejs/docker-node#2107 is resolved:
         #       https://github.com/nodejs/docker-node/issues/2107
         arch:
           - amd64
+          - arm32v6
+          - arm32v7
           - arm64v8
     runs-on: ubuntu-latest
     steps:
@@ -154,13 +156,14 @@ jobs:
 
       - name: Tag and push single-platform images
 
-        # TODO: Return `arm32v6`, `arm32v7` and `s390x` once
-        #       nodejs/docker-node#1973 is resolved:
+        # TODO: Return `s390x` once nodejs/docker-node#1973 is resolved:
         #       https://github.com/nodejs/docker-node/issues/1973
         # TODO: Return `ppc64le` once nodejs/docker-node#2107 is resolved:
         #       https://github.com/nodejs/docker-node/issues/2107
         run: |
           for platform in linux-amd64 \
+                          linux-arm32v6 \
+                          linux-arm32v7 \
                           linux-arm64v8
           do
             make docker.untar \
@@ -175,14 +178,15 @@ jobs:
           done
         if: ${{ steps.skip.outputs.no == 'true' }}
       - name: Tag and push multi-platform images
-        # TODO: Return `arm32v6`, `arm32v7` and `s390x` once
-        #       nodejs/docker-node#1973 is resolved:
+        # TODO: Return `s390x` once nodejs/docker-node#1973 is resolved:
         #       https://github.com/nodejs/docker-node/issues/1973
         # TODO: Return `ppc64le` once nodejs/docker-node#2107 is resolved:
         #       https://github.com/nodejs/docker-node/issues/2107
         run: make docker.manifest push=yes
                   registries=${{ matrix.registry }}
                   of='${{ steps.version.outputs.group1 }}-linux-amd64
+                      ${{ steps.version.outputs.group1 }}-linux-arm32v6
+                      ${{ steps.version.outputs.group1 }}-linux-arm32v7
                       ${{ steps.version.outputs.group1 }}-linux-arm64v8'
         if: ${{ steps.skip.outputs.no == 'true' }}
 
