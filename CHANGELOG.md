@@ -12,7 +12,11 @@ All user visible changes to this project will be documented in this file. This p
 
 ### Added
 
-- Support for `arm32v6` and `arm32v7` platforms. ([nodejs/docker-node#1946])
+- Support for `arm32v6` and `arm32v7` platforms. ([nodejs/docker-node#1946])### Upgraded
+
+### Upgraded
+
+- [Node.js] 24: <https://github.com/nodejs/node/blob/v24.0.0/doc/changelogs/CHANGELOG_V24.md#2025-05-06-version-2400-current-rafaelgss-and-juanarbol>
 
 [nodejs/docker-node#1946]: https://github.com/nodejs/docker-node/issues/1946
 

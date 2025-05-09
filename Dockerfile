@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/node
-ARG node_ver=23
+ARG node_ver=24
 FROM node:${node_ver}-alpine3.21
 
 ARG haraka_ver=3.1.0
