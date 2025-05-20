@@ -6,12 +6,14 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## main
+## [3.1.1-node24-r0] · 2025-05-20
+[3.1.1-node24-r0]: /../../tree/v3.1.1-node24-r0
 
-[Diff](/../../compare/v3.1.0-node23-r0...main)
+[Diff](/../../compare/v3.1.0-node23-r0...v3.1.1-node24-r0)
 
 ### Upgraded
 
+- [Haraka] 3.1.1: <https://github.com/haraka/Haraka/blob/v3.1.1/Changes.md#311---2025-05-19>
 - [Node.js] 24: <https://github.com/nodejs/node/blob/v24.0.0/doc/changelogs/CHANGELOG_V24.md#2025-05-06-version-2400-current-rafaelgss-and-juanarbol>
 
 
