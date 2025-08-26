@@ -37,7 +37,7 @@ RUN apk update \
 ENV HARAKA_HOME=/etc/haraka
 
 
-EXPOSE 25 587
+EXPOSE  587
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
