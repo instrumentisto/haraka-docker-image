@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [3.1.1-node24-r3] · 2025-10-09
+[3.1.1-node24-r3]: /../../tree/v3.1.1-node24-r3
+
+[Diff](/../../compare/v3.1.1-node24-r2...v3.1.1-node24-r3)
+
+### Security updated
+
+- [Alpine Linux] 3.22.2: <https://github.com/docker-library/official-images/commit/fdacb511822ac9045ec7ec066c1228f94291139f>
+
+
+
+
 ## [3.1.1-node24-r2] · 2025-07-16
 [3.1.1-node24-r2]: /../../tree/v3.1.1-node24-r2
 
