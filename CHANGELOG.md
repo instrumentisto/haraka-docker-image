@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [3.1.1-node25-r0] · 2025-10-17
+[3.1.1-node25-r0]: /../../tree/v3.1.1-node25-r0
+
+[Diff](/../../compare/v3.1.1-node24-r3...v3.1.1-node25-r0)
+
+### Upgraded
+
+- [Node.js] 25: <https://github.com/nodejs/node/blob/v25.0.0/doc/changelogs/CHANGELOG_V25.md#2025-10-15-version-2500-current-rafaelgss>
+
+
+
+
 ## [3.1.1-node24-r3] · 2025-10-09
 [3.1.1-node24-r3]: /../../tree/v3.1.1-node24-r3
 
