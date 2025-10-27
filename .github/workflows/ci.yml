@@ -102,7 +102,7 @@ jobs:
       - uses: docker/setup-qemu-action@v3
       - run: make npm.install
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: ${{ matrix.os }}-${{ matrix.arch }}-${{ github.run_number }}
           path: .cache/
@@ -155,7 +155,7 @@ jobs:
           text: ${{ github.ref }}
           regex: '^refs/tags/v(.+)$'
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           path: .cache/
         if: ${{ steps.skip.outputs.no == 'true' }}
