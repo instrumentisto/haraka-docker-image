@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [3.1.1-node25-r1] · 2025-12-05
+[3.1.1-node25-r1]: /../../tree/v3.1.1-node25-r1
+
+[Diff](/../../compare/v3.1.1-node25-r0...v3.1.1-node25-r1)
+
+### Upgraded
+
+- [Alpine Linux] 3.23: <https://www.alpinelinux.org/posts/Alpine-3.23.0-released.html>
+
+
+
+
 ## [3.1.1-node25-r0] · 2025-10-17
 [3.1.1-node25-r0]: /../../tree/v3.1.1-node25-r0
 
