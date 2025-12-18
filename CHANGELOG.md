@@ -6,7 +6,7 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## [3.1.1-node25-r1] · 2025-12-05
+## [3.1.1-node25-r1] · 2025-12-18
 [3.1.1-node25-r1]: /../../tree/v3.1.1-node25-r1
 
 [Diff](/../../compare/v3.1.1-node25-r0...v3.1.1-node25-r1)
@@ -14,6 +14,10 @@ All user visible changes to this project will be documented in this file. This p
 ### Upgraded
 
 - [Alpine Linux] 3.23: <https://www.alpinelinux.org/posts/Alpine-3.23.0-released.html>
+
+### Security updated
+
+- [Alpine Linux] 3.23.2: <https://github.com/docker-library/official-images/commit/3159434b3c3d42e64dcbc7364d0031abe92210a3>
 
 
 
