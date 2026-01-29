@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [3.1.2-node25-r1] · 2026-01-29
+[3.1.2-node25-r1]: /../../tree/v3.1.2-node25-r1
+
+[Diff](/../../compare/v3.1.2-node25-r0...v3.1.2-node25-r1)
+
+### Security updated
+
+- [Alpine Linux] 3.23.3: <https://github.com/docker-library/official-images/commit/11469a99b55a9b5b057d64c583f531417dd1f6c5>
+
+
+
+
 ## [3.1.2-node25-r0] · 2026-01-12
 [3.1.2-node25-r0]: /../../tree/v3.1.2-node25-r0
 
