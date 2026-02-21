@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [3.1.3-node25-r0] · 2026-02-21
+[3.1.3-node25-r0]: /../../tree/v3.1.3-node25-r0
+
+[Diff](/../../compare/v3.1.2-node25-r1...v3.1.3-node25-r0)
+
+### Upgraded
+
+- [Haraka] 3.1.3: <https://github.com/haraka/Haraka/blob/v3.1.3/Changes.md#313---2026-02-06>
+
+
+
+
 ## [3.1.2-node25-r1] · 2026-01-29
 [3.1.2-node25-r1]: /../../tree/v3.1.2-node25-r1
 
