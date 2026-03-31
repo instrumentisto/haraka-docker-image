@@ -2,7 +2,7 @@
 ARG node_ver=25
 FROM node:${node_ver}-alpine3.23
 
-ARG haraka_ver=3.1.3
+ARG haraka_ver=3.1.4
 ARG build_rev=0
 
 
